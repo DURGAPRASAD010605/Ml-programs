@@ -1,0 +1,15 @@
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import  accuracy_score,classification_report
+iris=load_iris()
+x=iris.data
+y=iris.target
+x_train,x_test,y_train,y_test=train_test_split(
+    x,y,test_size=0.3,random_state=42)
+knn_Classifier=KNeighborsClassifier(n_neighbors=3)
+knn_Classifier.fit(x_train,y_train)
+y_pred=knn_Classifier.predict(x_test)
+print("KNN Classification Accuracy  ", accuracy_score(y_test,y_pred))
+print("\n Classification Report : \n",classification_report(y_test, y_pred))
+
